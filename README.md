@@ -1,2 +1,3 @@
-# Healers-E-Pharamacy
- Healers E-Pharmacy System is an online platform that enables users to purchase prescription and non-prescription drugs, health products and medical supplies from the comfort of their own homes.
+# Healers E-Pharmacy
+
+Healers E-Pharmacy System is a web application developed as a group project for the **Real World Project** module during the 3rd year 1st semester of my BSc (Hons) Computing degree.
