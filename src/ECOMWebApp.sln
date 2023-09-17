@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECOMPL", "ECOMWebApp\ECOMPL.csproj", "{9824622F-FC04-432B-A026-783B00CABD3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECOMBLL", "ECOMBLL\ECOMBLL.csproj", "{92F5DC41-74AD-4C51-969C-08E62D062BC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECOMDAL", "ECOMDAL\ECOMDAL.csproj", "{E0480313-5B21-40F7-9344-5B116E57D297}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9824622F-FC04-432B-A026-783B00CABD3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9824622F-FC04-432B-A026-783B00CABD3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9824622F-FC04-432B-A026-783B00CABD3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9824622F-FC04-432B-A026-783B00CABD3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92F5DC41-74AD-4C51-969C-08E62D062BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F5DC41-74AD-4C51-969C-08E62D062BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F5DC41-74AD-4C51-969C-08E62D062BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F5DC41-74AD-4C51-969C-08E62D062BC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0480313-5B21-40F7-9344-5B116E57D297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0480313-5B21-40F7-9344-5B116E57D297}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0480313-5B21-40F7-9344-5B116E57D297}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0480313-5B21-40F7-9344-5B116E57D297}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9A1636A-1092-4BAF-BD0D-C8F6D675145F}
+	EndGlobalSection
+EndGlobal

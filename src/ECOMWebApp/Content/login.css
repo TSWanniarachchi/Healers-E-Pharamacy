@@ -1,0 +1,565 @@
+﻿html {
+}
+
+.row {
+    margin-right: 0px !important;
+}
+
+.loginbody {
+    background: url('../Images/Login/login.jpg');
+    font-family: Oxygen !important;
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+}
+
+.d1 {
+    margin-right: 0px !important;
+}
+
+.login-form-style {
+    margin-top: 2%;
+    border-radius: 12px;
+}
+
+.login-bg {
+    background-image: url('../Images/Common1.jpg');
+    height: 100% !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.logo {
+    width: 65%;
+    margin-top: 16%;
+}
+
+
+/*.form-control {
+    margin:0px 50px 0px 50px;
+
+}*/
+
+.test {
+    /*margin:10%;*/
+}
+
+#txtUsername {
+    /*border-radius: 100px;*/
+    font-family: Oxygen;
+    border-radius: 50px !important;
+}
+
+#txtpassword {
+    /*border-radius: 100px;*/
+    font-family: Oxygen;
+    border-radius: 50px !important;
+}
+
+.username {
+    width: 100% !important;
+    background-color: #fff;
+    border-bottom: #e37235 solid 1px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 1px;
+    border-radius: 100px;
+    font-family: Oxygen;
+}
+
+.loginlabel {
+    color: black;
+    margin-bottom: 0px !important;
+    font-family: Oxygen;
+    margin-top: 7%;
+}
+
+.header-title {
+    margin-top: 2%;
+    margin-bottom: 8%;
+    color: black;
+    text-align: center;
+    font-family: alata;
+    font-size: 24px;
+}
+
+.title {
+    color: black;
+    font-weight: 500;
+    margin-top: 5%;
+    margin-bottom: 5px !important;
+    /*margin-left: 37px;*/
+    font-family: Oxygen;
+    font-size: 15px;
+}
+
+.btn-log {
+    color: rgb(255, 255, 255);
+    border-radius: 50px !important;
+    min-width: 130px !important;
+    font-size: 18px;
+    font-weight: 500;
+    background: rgb(240,113,53);
+    background: linear-gradient(90deg, rgb(142, 17, 5) 43%, rgb(183, 45, 34) 100%) !important;
+    border-color: white !important;
+    border-width: 1px !important;
+    padding: 3px;
+    margin-top: 20px;
+    cursor: pointer;
+    border: 1px solid white;
+    font-weight: 600 !important;
+}
+
+    .btn-log:hover {
+        background: linear-gradient(90deg, rgb(183, 45, 34) 43%,rgb(142, 17, 5) 100%) !important;
+    }
+
+.form-wrapper {
+    height: 100%;
+}
+
+.loginform h3 {
+    color: #e1f8ff;
+    font-style: italic;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.loginform hr {
+    border-top: 1px solid #e1f8ff;
+}
+
+.loginform {
+    float: right;
+    padding: 0px;
+    position: relative;
+}
+
+    .loginform .general-input-wrap {
+        border: 0px solid #0c3e63;
+        border-radius: 3px 4px;
+        position: relative;
+        padding: 5px 5px 5px 45px;
+        background: linear-gradient(-90deg, #1CB5E0 50%, #0a417d 100%);
+        margin-bottom: 15px;
+    }
+
+    .loginform .input-types-wrapper {
+        height: 235px;
+        margin-top: 40%;
+    }
+
+    .loginform .general-input-wrap input {
+        font-style: italic;
+        background: #e1f8ff;
+        color: #0a437f;
+        font-size: 17px;
+        border: 0;
+        outline: none;
+        box-shadow: none;
+    }
+
+        .loginform .general-input-wrap input:focus {
+            box-shadow: none;
+            border: 0;
+        }
+
+    .loginform .general-input-wrap .fa {
+        font-size: 24px;
+        color: #73e0ff;
+        position: absolute;
+        left: 13px;
+        top: 10px;
+    }
+
+}
+
+.saleforce {
+    margin: auto 0 !important;
+    height: 680px;
+}
+
+.sales-force-logo {
+    width: 18%;
+    position: fixed;
+    bottom: 35%;
+    left: 16%;
+}
+
+.angled-shape {
+    position: fixed;
+    top: 0;
+    left: -250px;
+}
+
+
+
+
+.logo-text {
+    position: absolute;
+    top: 570px !important;
+    left: 21%;
+    margin: 0 auto !important;
+    width: 58%;
+}
+
+
+.clouds {
+    padding: 0px !important;
+    margin-left: -15px !important;
+    width: 100% !important;
+    position: absolute;
+    bottom: 0px !important;
+    top: -14px;
+    opacity: 1 !important;
+}
+
+.D1 {
+    padding: 0px !important;
+    margin-left: -15px !important;
+    width: 100% !important;
+    position: absolute;
+    bottom: 0px !important;
+    top: 0px;
+    opacity: 1 !important;
+}
+
+.D2 {
+    padding: 0px !important;
+    margin-left: -15px !important;
+    width: 100% !important;
+    position: absolute;
+    bottom: 0px !important;
+    top: 0px;
+    opacity: 1 !important;
+}
+
+.D3 {
+    padding: 0px !important;
+    margin-left: -15px !important;
+    width: 100% !important;
+    position: absolute;
+    bottom: 0px !important;
+    top: 0px;
+    opacity: 1 !important;
+}
+
+.D4 {
+    padding: 0px !important;
+    margin-left: -15px !important;
+    width: 100% !important;
+    position: absolute;
+    bottom: 0px !important;
+    top: 0px;
+    opacity: 1 !important;
+}
+
+.D5 {
+    padding: 0px !important;
+    margin-left: -15px !important;
+    width: 100% !important;
+    position: absolute;
+    bottom: 0px !important;
+    top: 0px;
+    opacity: 1 !important;
+}
+
+
+em {
+    font-style: normal;
+    color: #e4051f;
+}
+
+
+
+.button-general-login {
+    background: #0a447f !important;
+    color: #baf0ff !important;
+    font-weight: 500;
+    border: 1px solid #73e0ff !important;
+    padding: 8px 23px;
+    border-radius: 3px 4px;
+}
+
+    .button-general-login:hover {
+        background: #168cbd !important;
+        color: white !important;
+        border: 1px solid white !important;
+        padding: 8px 23px;
+        border-radius: 3px 4px;
+    }
+
+
+.footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 13%;
+    margin-bottom: 10px;
+    color: black !important;
+    height: 30px;
+    font-size: 0.8em;
+    font-weight: 500;
+    font-family: Oxygen;
+}
+
+    .footer a {
+        color: #ffbf7a;
+        font-weight: 600;
+    }
+
+        .footer a:hover {
+            color: #cb7a07;
+            text-decoration: none;
+        }
+
+    .footer p {
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+
+
+
+.company {
+    font-family: 'Segoe UI';
+    font-size: 1.5em;
+    color: #064884;
+    text-align: center;
+    clear: both;
+    font-weight: 700;
+}
+
+
+.textshadow {
+    text-shadow: 1px 1px 4px #000;
+}
+
+
+
+@media only screen and (max-device-width : 1366px) and (max-device-height:768px) {
+    .angled-shape {
+        left: -11%;
+    }
+
+    .sales-force-logo {
+        width: 18%;
+        top: 40%;
+        left: 19%;
+    }
+
+    .loginform .input-types-wrapper {
+        margin-top: 20%;
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-device-width : 1280px) and (max-device-height: 800px) {
+    .angled-shape {
+        left: -11.5%;
+    }
+
+    .sales-force-logo {
+        width: 18%;
+        top: 40%;
+        left: 19%;
+    }
+
+    .loginform .input-types-wrapper {
+        margin-top: 50%;
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-device-width : 1280px) and (max-device-height: 720px) {
+    .angled-shape {
+        left: -13%;
+    }
+
+    .sales-force-logo {
+        width: 18%;
+        top: 40%;
+        left: 19%;
+    }
+
+    .loginform .input-types-wrapper {
+        margin-top: 40%;
+    }
+}
+
+@media only screen and (max-device-width : 1024px) and (max-device-height: 768px) {
+    .angled-shape {
+        left: -26%;
+    }
+
+    .sales-force-logo {
+        margin: 0 auto !important;
+    }
+
+    .scroll {
+        overflow-y: scroll;
+    }
+
+    .saleforce {
+        height: 500px !important;
+    }
+
+    .loginform {
+        width: 100% !important;
+    }
+
+    .logo {
+        width: 90%;
+    }
+
+    .scroll {
+        overflow-y: scroll;
+    }
+
+    .clouds {
+        display: none;
+    }
+
+
+
+    .loginform .input-types-wrapper {
+        margin-top: 1%;
+    }
+}
+
+@media only screen and (max-device-width : 1024px) {
+    .angled-shape {
+        left: -28%;
+    }
+
+    .scroll {
+        overflow-y: scroll;
+    }
+
+    .sales-force-logo {
+        width: 20%;
+        top: 40%;
+        left: 16%;
+    }
+
+    .loginform {
+        width: 100% !important;
+    }
+
+        .loginform .input-types-wrapper {
+            margin-top: 30%;
+        }
+}
+
+/*@media only screen and (max-width: 860px) {
+    .mobile-hidden {
+        display: none !important;
+    }
+
+    .loginbody {
+        background-color: rgb(15,75,143);
+        background: linear-gradient(45deg, rgba(15,75,143,1) 0%, rgb(26, 2, 0) 100%);
+        background-repeat: no-repeat;
+        background-size: 150vh 200vh;
+    }
+
+    .circle {
+        display: none !important;
+    }
+}*/
+
+@media only screen and (max-device-width : 960px) and (max-device-height: 600px) {
+    .angled-shape {
+        left: -32%;
+    }
+
+    .saleforce {
+        height: 250px !important;
+    }
+
+    .sales-force-logo {
+        width: 20%;
+        top: 40%;
+        left: 16%;
+    }
+
+    .logo {
+        width: 90%;
+    }
+
+    .scroll {
+        overflow-y: scroll;
+    }
+
+    .loginform {
+        width: 100% !important;
+        height: 500px;
+    }
+
+        .loginform .input-types-wrapper {
+            margin-top: 2%;
+        }
+
+    .copyright {
+        position: relative;
+    }
+}
+
+@media only screen and (max-device-width : 960px) {
+    .angled-shape {
+        left: -32%;
+    }
+
+    .saleforce {
+        height: 630px !important;
+    }
+
+    .sales-force-logo {
+        width: 20%;
+        top: 40%;
+        left: 16%;
+    }
+
+    .logo {
+        width: 90%;
+    }
+
+    .scroll {
+        overflow-y: scroll;
+    }
+
+    .loginform {
+        width: 100% !important;
+        height: 500px;
+    }
+
+        .loginform .input-types-wrapper {
+            margin-top: 2%;
+        }
+
+    .copyright {
+        position: relative;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .mobile-hidden {
+        display: none !important;
+    }
+
+    .mobile-view {
+        margin-left: 0px !important;
+        padding-top: 20px !important;
+        padding-left: 30px !important;
+    }
+
+    .loginbody {
+        /*background: rgb(196,49,36);*/
+        background-color: rgb(15,75,143);
+        background: linear-gradient(45deg, rgba(15,75,143,1) 0%, rgb(26, 2, 0) 100%);
+        background-repeat: no-repeat;
+        background-size: 100vh 132vh;
+    }
+
+    .circle {
+        display: none !important;
+    }
+}

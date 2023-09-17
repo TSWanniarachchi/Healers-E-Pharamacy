@@ -1,0 +1,1006 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CustomerMaster.master.cs" Inherits="ECOMWebApp.Pages.Customer.CustomerMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="../../favicon.ico" rel="apple-touch-icon-precomposed">
+    <link href="../../favicon.ico" rel="shortcut icon" type="image/png">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../Fonts/cfont.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:400,500,600,700&amp;display=swap&amp;ver=1607580870">
+    <link rel="stylesheet" href="../../Plugins/Customer/owl-carousel/assets/owl.carousel.css">
+    <link rel="stylesheet" href="../../Plugins/Customer/slick/slick/slick.css">
+    <link rel="stylesheet" href="../../Plugins/Customer/lightGallery/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="../../Plugins/Customer/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="../../Plugins/Customer/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../../Plugins/Customer/lightGallery/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="../../Plugins/Customer/noUiSlider/nouislider.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Content/Customer/style.css">
+    <%--<link rel="stylesheet" href="../../Content/Customer/home.css">
+    <link href="../../Content/Customer/customized.css" rel="stylesheet" />--%>
+
+    <!-- sweetalert2 -->
+    <script src="../../Scripts/sweetalert2.js"></script>
+    <script type="text/javascript">
+        function sweetalert(type, title, message) {
+            Swal.fire({
+                icon: type,
+                title: title,
+                text: message,
+            })
+        }
+    </script>
+
+    <asp:ContentPlaceHolder ID="cphHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+
+<body>
+    <form id="formMaster" runat="server">
+        <div class="ps-page">
+            <header class="ps-header ps-header--1">
+                <div class="ps-noti">
+                    <div class="container">
+                        <p class="m-0">Due to the <strong>COVID 19 </strong>epidemic, orders may be processed with a slight delay</p>
+                    </div>
+                    <a class="ps-noti__close"><i class="icon-cross"></i></a>
+                </div>
+                <div class="ps-header__top">
+                    <div class="container">
+                        <div class="ps-header__text">Need help? <strong>0775358664 </strong></div>
+                    </div>
+                </div>
+                <div class="ps-header__middle">
+                    <div class="container">
+                        <div class="ps-logo">
+                            <a href="../Customer/Home.aspx">
+                                <img src="../../Images/Customer/logo.png" alt=""><img class="sticky-logo" src="../../Images/Customer/sticky-logo.png" alt="" height="90"></a>
+                            <%--<img src="../../Images/Customer/logo.png" alt=""><img class="sticky-logo" src="../../Images/Customer/sticky-logo.png" alt=""></a>--%>
+                        </div>
+                        <a class="ps-menu--sticky" href="#"><i class="fa fa-bars"></i></a>
+                        <div class="ps-header__right">
+                            <ul class="ps-header__icons">
+                                <li><a class="ps-header__item open-search" href="#"><i class="icon-magnifier"></i></a></li>
+                                <li><a class="ps-header__item" href="#" id="login-modal"><i class="icon-user"></i></a>
+                                    <%--<li><asp:LinkButton ID="lbtnUser" runat="server" class="ps-header__item" ><i class="icon-user"></i></asp:LinkButton>--%>
+
+                                    <div class="ps-login--modal">
+
+                                        <div class="form-group" style="text-align: center">
+                                            <asp:Label ID="lblUName" runat="server"></asp:Label>
+                                        </div>
+                                        <div class="form-group" style="text-align: center">
+                                        </div>
+                                        <div class="form-group" style="text-align: center">
+                                            <asp:Label ID="lblUEmail" runat="server"></asp:Label>
+                                        </div>
+                                        <%--<button class="ps-btn ps-btn--warning" type="submit">Log In</button>--%>
+                                        <asp:LinkButton ID="lbtnAction" runat="server" OnClick="lbtnAction_Click" Text="Login" class="ps-btn ps-btn--warning"></asp:LinkButton>
+
+                                    </div>
+                                </li>
+                                <li><a class="ps-header__item" href="#"><i class="fa fa-heart-o"></i></a></li>
+                                <li><a class="ps-header__item" href="../Customer/ShoppingCart.aspx" id="cart-mini"><i class="icon-cart-empty"></i><span class="badge" id="countL" runat="server">
+                                    <asp:Label ID="lblCartItemcountL" runat="server"></asp:Label></span></a>
+
+                                </li>
+                            </ul>
+                            <div class="ps-language-currency"><a class="ps-dropdown-value" href="javascript:void(0);" data-toggle="modal" data-target="#popupLanguage">English</a><a class="ps-dropdown-value" href="javascript:void(0);" data-toggle="modal" data-target="#popupCurrency">LKR</a></div>
+                            <div class="ps-header__search">
+
+                                <div class="ps-search-table">
+                                    <div class="input-group">
+
+                                        <asp:TextBox ID="txtItemName" runat="server" class="form-control ps-input" placeholder="Search for products"></asp:TextBox>
+                                        <div class="input-group-append">
+                                            <asp:LinkButton ID="lbtnItemSearch" runat="server" OnClick="lbtnItemSearch_Click"><i class="fa fa-search"></i></asp:LinkButton>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <%--</form>--%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ps-navigation">
+                    <div class="container">
+                        <div class="ps-navigation__left">
+                            <nav class="ps-main-menu">
+                                <ul class="menu">
+                                    <li class="has-mega-menu"><a href="../Customer/Home.aspx"><i class="fa fa-bars"></i>HOME</a></li>
+                                    <li class="has-mega-menu"><a href="../Customer/AboutUs.aspx">ABOUT-US</a></li>
+                                    <li class="has-mega-menu"><a href="../Customer/Shop.aspx">ONLINE STORE<span class="sub-toggle"><i class="fa fa-chevron-down"></i></span></a>
+                                        <div class="mega-menu">
+                                            <div class="container">
+                                                <div class="mega-menu__row">
+
+                                                    <div class="ps-branch">
+                                                        <h3 class="ps-branch__title">Popular Brands</h3>
+                                                        <div class="ps-branch__box">
+                                                            <div class="ps-branch__item">
+                                                                <a href="#">
+                                                                    <img src="../../Images/Customer/branch/brand-1.jpg" alt="alt"></a>
+                                                            </div>
+                                                            <div class="ps-branch__item">
+                                                                <a href="#">
+                                                                    <img src="../../Images/Customer/branch/brand-2.jpg" alt="alt"></a>
+                                                            </div>
+                                                            <div class="ps-branch__item">
+                                                                <a href="#">
+                                                                    <img src="../../Images/Customer/branch/brand-3.jpg" alt="alt"></a>
+                                                            </div>
+                                                            <div class="ps-branch__item">
+                                                                <a href="#">
+                                                                    <img src="../../Images/Customer/branch/brand-4.jpg" alt="alt"></a>
+                                                            </div>
+                                                            <div class="ps-branch__item">
+                                                                <a href="#">
+                                                                    <img src="../../Images/Customer/branch/brand-5.jpg" alt="alt"></a>
+                                                            </div>
+                                                            <div class="ps-branch__item">
+                                                                <a href="#">
+                                                                    <img src="../../Images/Customer/branch/brand-6.jpg" alt="alt"></a>
+                                                            </div>
+                                                            <div class="ps-branch__item">
+                                                                <a href="#">
+                                                                    <img src="../../Images/Customer/branch/brand-7.jpg" alt="alt"></a>
+                                                            </div>
+                                                            <div class="ps-branch__item">
+                                                                <a href="#">
+                                                                    <img src="../../Images/Customer/branch/brand-8.jpg" alt="alt"></a>
+                                                            </div>
+                                                            <div class="ps-branch__item">
+                                                                <a href="#">
+                                                                    <img src="../../Images/Customer/branch/brand-9.jpg" alt="alt"></a>
+                                                            </div>
+                                                            <div class="ps-branch__item">
+                                                                <a href="#">
+                                                                    <img src="../../Images/Customer/branch/brand-10.jpg" alt="alt"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </li>
+                                    <li class="has-mega-menu"><a href="#">ORDER PRESCRPTION<span class="sub-toggle"><i class="fa fa-chevron-down"></i></span></a>
+                                        <div class="mega-menu" style="height: 110px !important">
+                                            <div class="container">
+                                                <div class="mega-menu__row">
+                                                    <div class="mega-menu__column col-12 col-sm-2">
+                                                        <ul class="sub-menu--mega sub-menu--bold">
+                                                            <li><a href="../Customer/UploadPrescription.aspx">Upload Prescription</a></li>
+                                                            <li><a href="../Customer/ConfirmPrescriptionOrder.aspx">Order Confirmation</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="mega-menu__column col-12 col-sm-10">
+                                                        <div class="ps-promo">
+                                                            <div class="ps-promo__item">
+                                                                <div class="row">
+                                                                    <div class="col-12 col-md-12">
+                                                                        <div class="ps-promo__item" style="height: 45px; margin-top: 10px;">
+                                                                            <img class="ps-promo__banner" src="../../Images/Customer/prescription/PaymentMethods.png" alt="alt">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="has-mega-menu"><a href="../Customer/PreviousOrder.aspx">PRIVIOUSE ORDERS</a></li>
+                                    <li class="has-mega-menu"><a href="../Customer/Feedback.aspx">FEEDBACK</a></li>
+                                    <li class="has-mega-menu"><a href="../Customer/ContactUs.aspx">CONTACT-US</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="ps-navigation__right">Need help? <strong>(+94) 775358664</strong></div>
+                    </div>
+                </div>
+            </header>
+            <header class="ps-header ps-header--1 ps-header--mobile">
+                <div class="ps-noti">
+                    <div class="container">
+                        <p class="m-0">Due to the <strong>COVID 19 </strong>epidemic, orders may be processed with a slight delay</p>
+                    </div>
+                    <a class="ps-noti__close"><i class="icon-cross"></i></a>
+                </div>
+                <div class="ps-header__middle">
+                    <div class="container">
+                        <div class="ps-logo">
+                            <a href="../Customer/Home.aspx">
+                                <img src="../../Images/Customer/mobile-logo.png" alt=""></a>
+                        </div>
+                        <div class="ps-header__right">
+                            <ul class="ps-header__icons">
+                                <li><a class="ps-header__item open-search" href="#"><i class="fa fa-search"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <asp:ScriptManager ID="scriptManager" runat="server"></asp:ScriptManager>
+
+            <%--Start--%>
+
+            <div>
+
+                <asp:ContentPlaceHolder ID="cphForm" runat="server">
+                </asp:ContentPlaceHolder>
+
+            </div>
+
+            <%--End--%>
+
+            <footer class="ps-footer ps-footer--1">
+                <div class="ps-footer--top">
+                    <div class="container">
+                        <div class="row m-0">
+                            <div class="col-12 col-sm-4 p-0">
+                                <p class="text-center"><a class="ps-footer__link" href="#"><i class="icon-wallet"></i>100% Money back</a></p>
+                            </div>
+                            <div class="col-12 col-sm-4 p-0">
+                                <p class="text-center"><a class="ps-footer__link" href="#"><i class="icon-bag2"></i>Non-contact shipping</a></p>
+                            </div>
+                            <div class="col-12 col-sm-4 p-0">
+                                <p class="text-center"><a class="ps-footer__link" href="#"><i class="icon-truck"></i>Free delivery for order over LKR 5000</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="ps-footer__middle">
+                        <div class="row">
+                            <div class="col-12 col-md-7">
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <div class="ps-footer--address">
+                                            <div class="ps-logo">
+                                                <a href="../Customer/Home.aspx">
+                                                    <img src="../../Images/Customer/sticky-logo.png" alt=""><img class="logo-white" src="../../Images/Customer/logo-white.png" alt=""><img class="logo-black" src="../../Images/Customer/Logo-black.png" alt=""><img class="logo-white-all" src="../../Images/Customer/logo-white1.png" alt=""><img class="logo-green" src="../../Images/Customer/logo-green.png" alt=""></a>
+                                            </div>
+                                            <div class="ps-footer__title">Our store</div>
+                                            <p>
+                                                No 67 Rathnapura Rd<br>
+                                                Avissawella, Sri Lanka
+                                           
+                                            </p>
+                                            <p><a target="_blank" href="https://www.google.com/maps/place/Healers+Pharmacy/@6.9513129,80.2109516,17z/data=!3m1!4b1!4m5!3m4!1s0x3ae3a9e4423a37f3:0x5ea0c90598242b2!8m2!3d6.9513129!4d80.2131403">Show on map</a></p>
+                                            <ul class="ps-social">
+                                                <li><a class="ps-social__link facebook" href="#"><i class="fa fa-facebook"></i><span class="ps-tooltip">Facebook</span></a></li>
+                                                <li><a class="ps-social__link instagram" href="https://www.instagram.com/healerspharmacy/"><i class="fa fa-instagram"></i><span class="ps-tooltip">Instagram</span></a></li>
+                                                <li><a class="ps-social__link twitter" href="https://twitter.com/HealersPharmacy"><i class="fa fa-twitter"></i><span class="ps-tooltip">twitter</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-8">
+                                        <div class="ps-footer--contact">
+                                            <h5 class="ps-footer__title">Need help</h5>
+                                            <div class="ps-footer__fax"><i class="icon-telephone"></i>(+94) 775358664</div>
+                                            <p class="ps-footer__work">
+                                                Monday – Friday: 9:00-20:00<br>
+                                                Saturday: 11:00 – 15:00
+                                           
+                                            </p>
+                                            <hr>
+                                            <p><a class="ps-footer__email" href="mailto:healers@gmail.com"><i class="icon-envelope"></i>healers@gmail.com </a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="row">
+                                    <div class="col-6 col-md-4">
+                                        <div class="ps-footer--block">
+                                            <h5 class="ps-block__title">Information</h5>
+                                            <ul class="ps-block__list">
+                                                <li><a href="../Customer/AboutUs.aspx">About us</a></li>
+                                                <li><a href="../Customer/ContactUs.aspx">Contact us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="ps-footer--block">
+                                            <h5 class="ps-block__title">Account</h5>
+                                            <ul class="ps-block__list">
+                                                <%--<li><a href="#">My account</a></li>--%>
+                                                <li><a href="#">My orders</a></li>
+                                                <li><a href="../Customer/Shop.aspx">Shopping Cart</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="ps-footer--block">
+                                            <h5 class="ps-block__title">Store</h5>
+                                            <ul class="ps-block__list">
+                                                <li><a href="../Customer/Shop.aspx">Online Store</a></li>
+                                                <li><a href="../Customer/Home.aspx">Lates products</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ps-footer--bottom">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <p>Copyright © 2021 OBS Team. All Rights Reserved</p>
+                            </div>
+                            <div class="col-12 col-md-6 text-right">
+                                <img src="../../Images/Customer/payment.png" alt=""><img class="payment-light" src="../../Images/Customer/payment-light.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <div class="ps-navigation--footer">
+            <div class="ps-nav__item"><a href="#" id="open-menu"><i class="icon-menu"></i></a><a href="#" id="close-menu"><i class="icon-cross"></i></a></div>
+            <div class="ps-nav__item"><a href="../Customer/Home.aspx"><i class="icon-home2"></i></a></div>
+            <div class="ps-nav__item"><a href="my-account.html"><i class="icon-user"></i></a></div>
+            <div class="ps-nav__item"><a href="wishlist.html"><i class="fa fa-heart-o"></i><span class="badge"></span></a></div>
+            <div class="ps-nav__item">
+                <a href="shopping-cart.html"><i class="icon-cart-empty"></i><span class="badge">
+                    <asp:Label ID="Label1" runat="server" Text="1"></asp:Label></span></a>
+            </div>
+        </div>
+        <div class="ps-menu--slidebar">
+            <div class="ps-menu__content">
+                <ul class="menu--mobile">
+                    <li class="menu-item-has-children"><a href="#">Products</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+                        <ul class="sub-menu">
+                            <li><a href="#">Wound Care</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+                                <ul class="sub-menu">
+                                    <li><a href="category-list.html">Bandages</a></li>
+                                    <li><a href="category-list.html">Gypsum foundations</a></li>
+                                    <li><a href="category-list.html">Patches and tapes</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Higiene</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+                                <ul class="sub-menu">
+                                    <li><a href="category-list.html">Disposable products</a></li>
+                                    <li><a href="category-list.html">Face masks</a></li>
+                                    <li><a href="category-list.html">Gloves</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Laboratory</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+                                <ul class="sub-menu">
+                                    <li><a href="category-list.html">Devices</a></li>
+                                    <li><a href="category-list.html">Diagnostic tests</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"><a href="#">Home Medical Supplies</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+                        <ul class="sub-menu">
+                            <li><a href="category-list.html">Diagnosis</a></li>
+                            <li><a href="category-list.html">Accessories Tools</a></li>
+                            <li><a href="category-list.html">Bandages</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"><a href="#">Collection</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+                        <ul class="sub-menu">
+                            <li><a href="category-list.html">Face masks</a></li>
+                            <li><a href="category-list.html">Dental</a></li>
+                            <li><a href="category-list.html">Micrscope</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"><a href="contact-us.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="ps-menu__footer">
+                <div class="ps-menu__item">
+                    <ul class="ps-language-currency">
+                        <li class="menu-item-has-children"><a href="#">English</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+                            <ul class="sub-menu">
+                                <li><a href="#">Français</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><a href="#">LKR</a><span class="sub-toggle"><i class="fa fa-chevron-down"></i></span>
+                            <ul class="sub-menu">
+                                <li><a href="#">LKR</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ps-menu__item">
+                    <div class="ps-menu__contact">Need help? <strong>0775358664</strong></div>
+                </div>
+            </div>
+        </div>
+        <button class="btn scroll-top" style="display: none;"><i class="fa fa-angle-double-up"></i></button>
+        <div class="ps-preloader" id="preloader">
+            <div class="ps-preloader-section ps-preloader-left"></div>
+            <div class="ps-preloader-section ps-preloader-right"></div>
+        </div>
+        <div class="modal fade" id="popupQuickview" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered ps-quickview">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="wrap-modal-slider container-fluid ps-quickview__body">
+                            <button class="close ps-quickview__close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <div class="ps-product--detail">
+                                <div class="row">
+                                    <div class="col-12 col-xl-6">
+                                        <div class="ps-product--gallery">
+                                            <div class="ps-product__thumbnail slick-initialized slick-slider" style="display: block;">
+                                                <div aria-live="polite" class="slick-list draggable">
+                                                    <div class="slick-track" role="listbox" style="opacity: 1; width: 0px; transform: translate3d(0px, 0px, 0px);">
+                                                        <div class="slide slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" tabindex="-1" style="width: 0px;">
+                                                            <img src="../../Images/Customer/products/034.jpg" alt="alt">
+                                                        </div>
+                                                        <div class="slide slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 0px;">
+                                                            <img src="../../Images/Customer/products/001.jpg" alt="alt">
+                                                        </div>
+                                                        <div class="slide slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide01" style="width: 0px;">
+                                                            <img src="../../Images/Customer/products/047.jpg" alt="alt">
+                                                        </div>
+                                                        <div class="slide slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide02" style="width: 0px;">
+                                                            <img src="../../Images/Customer/products/047.jpg" alt="alt">
+                                                        </div>
+                                                        <div class="slide slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide03" style="width: 0px;">
+                                                            <img src="../../Images/Customer/products/008.jpg" alt="alt">
+                                                        </div>
+                                                        <div class="slide slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide04" style="width: 0px;">
+                                                            <img src="../../Images/Customer/products/034.jpg" alt="alt">
+                                                        </div>
+                                                        <div class="slide slick-slide slick-cloned" data-slick-index="5" id="" aria-hidden="true" tabindex="-1" style="width: 0px;">
+                                                            <img src="../../Images/Customer/products/001.jpg" alt="alt">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            </div>
+                                            <div class="ps-gallery--image slick-initialized slick-slider" style="display: block;">
+                                                <div aria-live="polite" class="slick-list draggable">
+                                                    <div class="slick-track" role="listbox" style="opacity: 1; width: 0px; transform: translate3d(0px, 0px, 0px);">
+                                                        <div class="slide slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide10" style="width: 0px;">
+                                                            <div class="ps-gallery__item">
+                                                                <img src="../../Images/Customer/products/001.jpg" alt="alt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="slide slick-slide" data-slick-index="1" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide11" style="width: 0px;">
+                                                            <div class="ps-gallery__item">
+                                                                <img src="../../Images/Customer/products/047.jpg" alt="alt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="slide slick-slide" data-slick-index="2" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide12" style="width: 0px;">
+                                                            <div class="ps-gallery__item">
+                                                                <img src="../../Images/Customer/products/047.jpg" alt="alt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="slide slick-slide" data-slick-index="3" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide13" style="width: 0px;">
+                                                            <div class="ps-gallery__item">
+                                                                <img src="../../Images/Customer/products/008.jpg" alt="alt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="slide slick-slide" data-slick-index="4" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide14" style="width: 0px;">
+                                                            <div class="ps-gallery__item">
+                                                                <img src="../../Images/Customer/products/034.jpg" alt="alt">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-xl-6">
+                                        <div class="ps-product__info">
+                                            <div class="ps-product__badge">
+                                                <span class="ps-badge ps-badge--instock">IN STOCK</span>
+                                            </div>
+                                            <div class="ps-product__branch"><a href="#">HeartRate</a></div>
+                                            <div class="ps-product__title"><a href="#">Blood Pressure Monitor</a></div>
+                                            <div class="ps-product__rating">
+                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                    <select class="ps-rating" data-read-only="true" style="display: none;">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4" selected="selected">4</option>
+                                                        <option value="5">5</option>
+                                                    </select><div class="br-widget br-readonly">
+                                                        <a href="#" data-rating-value="1" data-rating-text="1" class="br-selected"></a><a href="#" data-rating-value="2" data-rating-text="2" class="br-selected"></a><a href="#" data-rating-value="3" data-rating-text="3" class="br-selected"></a><a href="#" data-rating-value="4" data-rating-text="4" class="br-selected br-current"></a><a href="#" data-rating-value="5" data-rating-text="5"></a>
+                                                        <div class="br-current-rating">4</div>
+                                                    </div>
+                                                </div>
+                                                <span class="ps-product__review">(5 Reviews)</span>
+                                            </div>
+                                            <div class="ps-product__desc">
+                                                <ul class="ps-product__list">
+                                                    <li>Study history up to 30 days</li>
+                                                    <li>Up to 5 users simultaneously</li>
+                                                    <li>Has HEALTH certificate</li>
+                                                </ul>
+                                            </div>
+                                            <div class="ps-product__meta">
+                                                <span class="ps-product__price">$77.65</span>
+                                            </div>
+                                            <div class="ps-product__quantity">
+                                                <h6>Quantity</h6>
+                                                <div class="d-md-flex align-items-center">
+                                                    <div class="def-number-input number-input safari_only">
+                                                        <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                                        <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                                    </div>
+                                                    <a class="ps-btn ps-btn--warning" href="#" data-toggle="modal" data-target="#popupAddcartV2">Add to cart</a>
+                                                </div>
+                                            </div>
+                                            <div class="ps-product__type">
+                                                <ul class="ps-product__list">
+                                                    <li><span class="ps-list__title">Tags: </span><a class="ps-list__text" href="#">Health</a><a class="ps-list__text" href="#">Thermometer</a>
+                                                    </li>
+                                                    <li><span class="ps-list__title">SKU: </span><a class="ps-list__text" href="#">SF-006</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="popupCompare" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered ps-compare--popup">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="wrap-modal-slider ps-compare__body">
+                            <button class="close ps-compare__close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <div class="ps-compare--product">
+                                <div class="ps-compare__header">
+                                    <div class="container">
+                                        <h2>Compare Products</h2>
+                                    </div>
+                                </div>
+                                <div class="ps-compare__content">
+                                    <div class="ps-compare__table">
+                                        <table class="table ps-table">
+                                            <tbody>
+                                                <tr>
+                                                    <th></th>
+                                                    <td>
+                                                        <div class="ps-product__remove"><a href="#"><i class="fa fa-times"></i></a></div>
+                                                        <div class="ps-product__thumbnail">
+                                                            <a class="ps-product__image" href="product1.html">
+                                                                <figure>
+                                                                    <img src="../../Images/Customer/products/001.jpg" alt="">
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                        <div class="ps-product__content">
+                                                            <h5 class="ps-product__title"><a href="product1.html">Blood Pressure Monitor</a></h5>
+                                                            <div class="ps-product__meta">
+                                                                <span class="ps-product__price">$77.65</span>
+                                                            </div>
+                                                            <button class="ps-btn ps-btn--warning">Add to cart</button>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="ps-product__remove"><a href="#"><i class="fa fa-times"></i></a></div>
+                                                        <div class="ps-product__thumbnail">
+                                                            <a class="ps-product__image" href="product1.html">
+                                                                <figure>
+                                                                    <img src="../../Images/Customer/products/034.jpg" alt="">
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                        <div class="ps-product__content">
+                                                            <h5 class="ps-product__title"><a href="product1.html">Blood Pressure Monitor Upper Arm</a></h5>
+                                                            <div class="ps-product__meta">
+                                                                <span class="ps-product__del">$64.65</span><span class="ps-product__price sale">$86.67</span>
+                                                            </div>
+                                                            <button class="ps-btn ps-btn--warning">Add to cart</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Description</th>
+                                                    <td>
+                                                        <ul class="ps-product__list">
+                                                            <li class="ps-check-line">5 cleaning programs</li>
+                                                            <li class="ps-check-line">Digital display</li>
+                                                            <li class="ps-check-line">Memory for 3 user</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td>
+                                                        <ul class="ps-product__list">
+                                                            <li class="ps-check-line">5 cleaning programs</li>
+                                                            <li class="ps-check-line">Digital display</li>
+                                                            <li class="ps-check-line">Memory for 3 user</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Availability</th>
+                                                    <td>
+                                                        <p class="ps-product__text ps-check-line">in stock</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="ps-product__text ps-check-line">in stock</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Weight</th>
+                                                    <td>
+                                                        <p class="ps-product__text">10 kg</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="ps-product__text">10 kg</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Dimensions</th>
+                                                    <td>
+                                                        <p class="ps-product__text">10 × 10 × 10 cm</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="ps-product__text">10 × 10 × 10 cm</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Color</th>
+                                                    <td>
+                                                        <p class="ps-product__text">Red, Navy</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="ps-product__text">Green</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Sku</th>
+                                                    <td>
+                                                        <p class="ps-product__text">SF-006</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="ps-product__text">BE-001</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Price</th>
+                                                    <td><span class="ps-product__price">$77.65</span>
+                                                    </td>
+                                                    <td><span class="ps-product__del">$64.65</span><span class="ps-product__price sale">$86.67</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="popupLanguage" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ps-popup--select">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="wrap-modal-slider container-fluid">
+                            <button class="close ps-popup__close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <div class="ps-popup__body">
+                                <h2 class="ps-popup__title">Select language</h2>
+                                <ul class="ps-popup__list">
+                                    <li class="language-item"><a class="active btn" href="javascript:void(0);" data-value="English">English</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="popupCurrency" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ps-popup--select">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="wrap-modal-slider container-fluid">
+                            <button class="close ps-popup__close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <div class="ps-popup__body">
+                                <h2 class="ps-popup__title">Select currency</h2>
+                                <ul class="ps-popup__list">
+                                    <li class="currency-item"><a class="active btn" href="javascript:void(0);" data-value="LKR">LKR</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="popupAddcartV2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered ps-addcart">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="wrap-modal-slider container-fluid ps-addcart__body">
+                            <div class="ps-addcart__overlay">
+                                <div class="ps-addcart__loading"></div>
+                            </div>
+                            <button class="close ps-addcart__close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <p class="ps-addcart__noti"><i class="fa fa-check"></i>Added to cart succesfully</p>
+                            <div class="ps-addcart__product">
+                                <div class="ps-product ps-product--standard">
+                                    <div class="ps-product__thumbnail">
+                                        <a class="ps-product__image" href="#">
+                                            <figure>
+                                                <img src="../../Images/Customer/products/015.jpg" alt=""><img src="../../Images/Customer/products/040.jpg" alt="">
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    <div class="ps-product__content">
+                                        <div class="ps-product__title"><a>Lens Frame Professional Adjustable Multifunctional</a></div>
+                                        <div class="ps-product__quantity"><span>x2</span></div>
+                                        <div class="ps-product__meta"><span class="ps-product__price">$89.65</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ps-addcart__header">
+                                <h3>Want o add one of these?</h3>
+                                <p>People who buy this product buy also:</p>
+                            </div>
+                            <div class="ps-addcart__content">
+                                <div class="owl-carousel owl-loaded owl-drag" data-owl-auto="false" data-owl-loop="true" data-owl-speed="15000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="3" data-owl-item-xs="1" data-owl-item-sm="2" data-owl-item-md="2" data-owl-item-lg="3" data-owl-item-xl="3" data-owl-duration="1000" data-owl-mousedrag="on">
+
+
+
+                                    <div class="owl-stage-outer">
+                                        <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s;">
+                                            <div class="owl-item">
+                                                <div class="ps-product ps-product--standard">
+                                                    <div class="ps-product__thumbnail">
+                                                        <a class="ps-product__image" href="product1.html">
+                                                            <figure>
+                                                                <img src="../../Images/Customer/products/015.jpg" alt="alt"><img src="../../Images/Customer/products/040.jpg" alt="alt">
+                                                            </figure>
+                                                        </a>
+                                                        <div class="ps-product__actions">
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Wishlist"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                                            <div class="ps-product__item rotate" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to compare"><a href="#" data-toggle="modal" data-target="#popupCompare"><i class="fa fa-align-left"></i></a></div>
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick view"><a href="#" data-toggle="modal" data-target="#popupQuickview"><i class="fa fa-search"></i></a></div>
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to cart"><a href="#" data-toggle="modal" data-target="#popupAddcart"><i class="fa fa-shopping-basket"></i></a></div>
+                                                        </div>
+                                                        <div class="ps-product__badge">
+                                                            <div class="ps-badge ps-badge--sale">Sale</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ps-product__content">
+                                                        <h5 class="ps-product__title"><a href="product1.html">Lens Frame Professional Adjustable Multifunctional</a></h5>
+                                                        <div class="ps-product__meta">
+                                                            <span class="ps-product__price sale">$89.65</span><span class="ps-product__del">$60.65</span>
+                                                        </div>
+                                                        <div class="ps-product__rating">
+                                                            <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                <select class="ps-rating" data-read-only="true" style="display: none;">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5" selected="selected">5</option>
+                                                                </select><div class="br-widget br-readonly">
+                                                                    <a href="#" data-rating-value="1" data-rating-text="1" class="br-selected"></a><a href="#" data-rating-value="2" data-rating-text="2" class="br-selected"></a><a href="#" data-rating-value="3" data-rating-text="3" class="br-selected"></a><a href="#" data-rating-value="4" data-rating-text="4" class="br-selected"></a><a href="#" data-rating-value="5" data-rating-text="5" class="br-selected br-current"></a>
+                                                                    <div class="br-current-rating">5</div>
+                                                                </div>
+                                                            </div>
+                                                            <span class="ps-product__review">( Reviews)</span>
+                                                        </div>
+                                                        <div class="ps-product__desc">
+                                                            <ul class="ps-product__list">
+                                                                <li>Study history up to 30 days</li>
+                                                                <li>Up to 5 users simultaneously</li>
+                                                                <li>Has HEALTH certificate</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="ps-product__actions ps-product__group-mobile">
+                                                            <div class="ps-product__quantity">
+                                                                <div class="def-number-input number-input safari_only">
+                                                                    <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                                                    <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                                                    <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ps-product__cart"><a class="ps-btn ps-btn--warning" href="#" data-toggle="modal" data-target="#popupAddcart">Add to cart</a></div>
+                                                            <div class="ps-product__item cart" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to cart"><a href="#"><i class="fa fa-shopping-basket"></i></a></div>
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i></a></div>
+                                                            <div class="ps-product__item rotate" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to compare"><a href="compare.html"><i class="fa fa-align-left"></i></a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="owl-item">
+                                                <div class="ps-product ps-product--standard">
+                                                    <div class="ps-product__thumbnail">
+                                                        <a class="ps-product__image" href="product1.html">
+                                                            <figure>
+                                                                <img src="../../Images/Customer/products/028.jpg" alt="alt"><img src="../../Images/Customer/products/045.jpg" alt="alt">
+                                                            </figure>
+                                                        </a>
+                                                        <div class="ps-product__actions">
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Wishlist"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                                            <div class="ps-product__item rotate" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to compare"><a href="#" data-toggle="modal" data-target="#popupCompare"><i class="fa fa-align-left"></i></a></div>
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick view"><a href="#" data-toggle="modal" data-target="#popupQuickview"><i class="fa fa-search"></i></a></div>
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to cart"><a href="#" data-toggle="modal" data-target="#popupAddcart"><i class="fa fa-shopping-basket"></i></a></div>
+                                                        </div>
+                                                        <div class="ps-product__badge">
+                                                        </div>
+                                                    </div>
+                                                    <div class="ps-product__content">
+                                                        <h5 class="ps-product__title"><a href="product1.html">Digital Thermometer X30-Pro</a></h5>
+                                                        <div class="ps-product__meta">
+                                                            <span class="ps-product__price sale">$60.39</span><span class="ps-product__del">$89.99</span>
+                                                        </div>
+                                                        <div class="ps-product__rating">
+                                                            <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                <select class="ps-rating" data-read-only="true" style="display: none;">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4" selected="selected">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select><div class="br-widget br-readonly">
+                                                                    <a href="#" data-rating-value="1" data-rating-text="1" class="br-selected"></a><a href="#" data-rating-value="2" data-rating-text="2" class="br-selected"></a><a href="#" data-rating-value="3" data-rating-text="3" class="br-selected"></a><a href="#" data-rating-value="4" data-rating-text="4" class="br-selected br-current"></a><a href="#" data-rating-value="5" data-rating-text="5"></a>
+                                                                    <div class="br-current-rating">4</div>
+                                                                </div>
+                                                            </div>
+                                                            <span class="ps-product__review">( Reviews)</span>
+                                                        </div>
+                                                        <div class="ps-product__desc">
+                                                            <ul class="ps-product__list">
+                                                                <li>Study history up to 30 days</li>
+                                                                <li>Up to 5 users simultaneously</li>
+                                                                <li>Has HEALTH certificate</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="ps-product__actions ps-product__group-mobile">
+                                                            <div class="ps-product__quantity">
+                                                                <div class="def-number-input number-input safari_only">
+                                                                    <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                                                    <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                                                    <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ps-product__cart"><a class="ps-btn ps-btn--warning" href="#" data-toggle="modal" data-target="#popupAddcart">Add to cart</a></div>
+                                                            <div class="ps-product__item cart" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to cart"><a href="#"><i class="fa fa-shopping-basket"></i></a></div>
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i></a></div>
+                                                            <div class="ps-product__item rotate" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to compare"><a href="compare.html"><i class="fa fa-align-left"></i></a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="owl-item">
+                                                <div class="ps-product ps-product--standard">
+                                                    <div class="ps-product__thumbnail">
+                                                        <a class="ps-product__image" href="product1.html">
+                                                            <figure>
+                                                                <img src="../../Images/Customer/products/020.jpg" alt="alt"><img src="../../Images/Customer/products/008.jpg" alt="alt">
+                                                            </figure>
+                                                        </a>
+                                                        <div class="ps-product__actions">
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Wishlist"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                                            <div class="ps-product__item rotate" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to compare"><a href="#" data-toggle="modal" data-target="#popupCompare"><i class="fa fa-align-left"></i></a></div>
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick view"><a href="#" data-toggle="modal" data-target="#popupQuickview"><i class="fa fa-search"></i></a></div>
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to cart"><a href="#" data-toggle="modal" data-target="#popupAddcart"><i class="fa fa-shopping-basket"></i></a></div>
+                                                        </div>
+                                                        <div class="ps-product__badge">
+                                                            <div class="ps-badge ps-badge--hot">Hot</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ps-product__content">
+                                                        <h5 class="ps-product__title"><a href="product1.html">Bronze Blood Pressure Monitor</a></h5>
+                                                        <div class="ps-product__meta">
+                                                            <span class="ps-product__price">$56.65 - $97.65</span>
+                                                        </div>
+                                                        <div class="ps-product__rating">
+                                                            <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                <select class="ps-rating" data-read-only="true" style="display: none;">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5" selected="selected">5</option>
+                                                                </select><div class="br-widget br-readonly">
+                                                                    <a href="#" data-rating-value="1" data-rating-text="1" class="br-selected"></a><a href="#" data-rating-value="2" data-rating-text="2" class="br-selected"></a><a href="#" data-rating-value="3" data-rating-text="3" class="br-selected"></a><a href="#" data-rating-value="4" data-rating-text="4" class="br-selected"></a><a href="#" data-rating-value="5" data-rating-text="5" class="br-selected br-current"></a>
+                                                                    <div class="br-current-rating">5</div>
+                                                                </div>
+                                                            </div>
+                                                            <span class="ps-product__review">( Reviews)</span>
+                                                        </div>
+                                                        <div class="ps-product__desc">
+                                                            <ul class="ps-product__list">
+                                                                <li>Study history up to 30 days</li>
+                                                                <li>Up to 5 users simultaneously</li>
+                                                                <li>Has HEALTH certificate</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="ps-product__actions ps-product__group-mobile">
+                                                            <div class="ps-product__quantity">
+                                                                <div class="def-number-input number-input safari_only">
+                                                                    <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                                                    <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                                                    <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ps-product__cart"><a class="ps-btn ps-btn--warning" href="#" data-toggle="modal" data-target="#popupAddcart">Add to cart</a></div>
+                                                            <div class="ps-product__item cart" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to cart"><a href="#"><i class="fa fa-shopping-basket"></i></a></div>
+                                                            <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title="" data-original-title="Wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i></a></div>
+                                                            <div class="ps-product__item rotate" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to compare"><a href="compare.html"><i class="fa fa-align-left"></i></a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="owl-nav disabled">
+                                        <button type="button" role="presentation" class="owl-prev"><i class="fa fa-chevron-left"></i></button>
+                                        <button type="button" role="presentation" class="owl-next"><i class="fa fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="owl-dots disabled">
+                                        <button role="button" class="owl-dot active"><span></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ps-addcart__footer"><a class="ps-btn ps-btn--border" href="#" data-dismiss="modal" aria-label="Close">No thanks :(</a><a class="ps-btn ps-btn--warning" href="shopping-cart.html">Continue to Cart</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <!-- Main Footer -->
+    <div class="ps-navigation--footer">
+        <div class="ps-nav__item"><a href="#" id="open-menu"><i class="icon-menu"></i></a><a href="#" id="close-menu"><i class="icon-cross"></i></a></div>
+        <div class="ps-nav__item"><a href="../Customer/Home.aspx"><i class="icon-home2"></i></a></div>
+        <div class="ps-nav__item"><a href="my-account.html"><i class="icon-user"></i></a></div>
+        <div class="ps-nav__item"><a href="wishlist.html"><i class="fa fa-heart-o"></i><%--<span class="badge"></span>--%></a></div>
+        <div class="ps-nav__item"><a href="../Customer/ShoppingCart.aspx"><i class="icon-cart-empty"></i><%--<span class="badge"></span>--%><span id="countM" runat="server" class="badge"><asp:Label ID="lblCartItemcountM" runat="server"></asp:Label></span></a></div>
+    </div>
+
+    <!-- jQuery -->
+    <script data-cfasync="false" src="../../Scripts/email-decode.min.js"></script>
+    <script src="../../Plugins/Customer/jquery.min.js"></script>
+    <script src="../../Plugins/Customer/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="../../Plugins/Customer/select2/dist/js/select2.full.min.js"></script>
+    <script src="../../Plugins/Customer/owl-carousel/owl.carousel.min.js"></script>
+    <script src="../../Plugins/Customer/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+    <script src="../../Plugins/Customer/lightGallery/dist/js/lightgallery-all.min.js"></script>
+    <script src="../../Plugins/Customer/slick/slick/slick.min.js"></script>
+    <script src="../../Plugins/Customer/noUiSlider/nouislider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js.map"></script>
+    <script src="https://unpkg.com/popper.js@1.12.8/dist/popper.min.js.map"></script>
+    <!-- custom code-->
+    <script src="../../Scripts/customer-main.js"></script>
+    <asp:ContentPlaceHolder ID="cphScripts" runat="server">
+    </asp:ContentPlaceHolder>
+
+</body>
+</html>

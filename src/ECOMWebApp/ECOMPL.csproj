@@ -1,0 +1,899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.13\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.13\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9824622F-FC04-432B-A026-783B00CABD3D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ECOMWebApp</RootNamespace>
+    <AssemblyName>ECOMWebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44365</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.1</TypeScriptToolsVersion>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerLaunchUrl>http://{ServiceIPAddress}</DockerLaunchUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap, Version=4.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.4.6.0\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.6.0\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Client\adminlte.css" />
+    <Content Include="Content\Client\adminlte.min.css" />
+    <Content Include="Content\Client\theme.css" />
+    <Content Include="Content\Customer\adminlte.css" />
+    <Content Include="Content\Customer\customized.css" />
+    <Content Include="Content\Customer\home.css" />
+    <Content Include="Content\Customer\shop.css" />
+    <Content Include="Content\Customer\style.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Fonts\cfont.css" />
+    <Content Include="Fonts\fonts.googleapis.css" />
+    <Content Include="Images\Client\AdminLTELogo.png" />
+    <Content Include="Images\Client\avatar.png" />
+    <Content Include="Images\Client\credit\american-express.png" />
+    <Content Include="Images\Client\credit\cirrus.png" />
+    <Content Include="Images\Client\credit\mastercard.png" />
+    <Content Include="Images\Client\credit\paypal.png" />
+    <Content Include="Images\Client\credit\paypal2.png" />
+    <Content Include="Images\Client\credit\visa.png" />
+    <Content Include="Images\Client\dashboard\ashwagandha.png" />
+    <Content Include="Images\Client\dashboard\digital blood monitor.jpg" />
+    <Content Include="Images\Client\grid\Delete.png" />
+    <Content Include="Images\Client\grid\Disable.png" />
+    <Content Include="Images\Client\grid\Edit.png" />
+    <Content Include="Images\Client\grid\New.png" />
+    <Content Include="Images\Client\grid\Ok.png" />
+    <Content Include="Images\Client\grid\Select.png" />
+    <Content Include="Images\Client\grid\Undo.png" />
+    <Content Include="Images\Client\InvalidPrescription.jpg" />
+    <Content Include="Images\Client\status\arrow-undo.png" />
+    <Content Include="Images\Client\status\error.png" />
+    <Content Include="Images\Client\status\flip-horizontal.png" />
+    <Content Include="Images\Client\status\information.png" />
+    <Content Include="Images\Client\status\minimize.png" />
+    <Content Include="Images\Client\status\rotate.png" />
+    <Content Include="Images\Client\status\warning.png" />
+    <Content Include="Images\Client\users\user1-128x128.jpg" />
+    <Content Include="Images\Client\users\user2-128x128.jpg" />
+    <Content Include="Images\Client\users\user3-128x128.jpg" />
+    <Content Include="Images\Customer\about-us\345.png" />
+    <Content Include="Images\Customer\about-us\346.png" />
+    <Content Include="Images\Customer\about-us\36.png" />
+    <Content Include="Images\Customer\about-us\m1.jpg" />
+    <Content Include="Images\Customer\about-us\m2.jpg" />
+    <Content Include="Images\Customer\about-us\m3.jpg" />
+    <Content Include="Images\Customer\about-us\m4.jpeg" />
+    <Content Include="Images\Customer\about-us\m5.jpg" />
+    <Content Include="Images\Customer\about-us\m8.jpg" />
+    <Content Include="Images\Customer\AM_mc_vs_ms_ae_UK.png" />
+    <Content Include="Images\Customer\anti-virus-bg.jpg" />
+    <Content Include="Images\Customer\Arrow-1.png" />
+    <Content Include="Images\Customer\banner-delivery-2.jpg" />
+    <Content Include="Images\Customer\banner-sidebar1.jpg" />
+    <Content Include="Images\Customer\bg-comming-soon.jpg" />
+    <Content Include="Images\Customer\bg-newsletter15.jpg" />
+    <Content Include="Images\Customer\blog-detail-image.jpg" />
+    <Content Include="Images\Customer\blue-white-ribbon-on-pink-box.jpg" />
+    <Content Include="Images\Customer\branch\brand-1.jpg" />
+    <Content Include="Images\Customer\branch\brand-10.jpg" />
+    <Content Include="Images\Customer\branch\brand-2.jpg" />
+    <Content Include="Images\Customer\branch\brand-3.jpg" />
+    <Content Include="Images\Customer\branch\brand-4.jpg" />
+    <Content Include="Images\Customer\branch\brand-5.jpg" />
+    <Content Include="Images\Customer\branch\brand-6.jpg" />
+    <Content Include="Images\Customer\branch\brand-7.jpg" />
+    <Content Include="Images\Customer\branch\brand-8.jpg" />
+    <Content Include="Images\Customer\branch\brand-9.jpg" />
+    <Content Include="Images\Customer\branch\brand-dark-1.jpg" />
+    <Content Include="Images\Customer\branch\brand-dark-10.jpg" />
+    <Content Include="Images\Customer\branch\brand-dark-2.jpg" />
+    <Content Include="Images\Customer\branch\brand-dark-3.jpg" />
+    <Content Include="Images\Customer\branch\brand-dark-4.jpg" />
+    <Content Include="Images\Customer\branch\brand-dark-5.jpg" />
+    <Content Include="Images\Customer\branch\brand-dark-6.jpg" />
+    <Content Include="Images\Customer\branch\brand-dark-7.jpg" />
+    <Content Include="Images\Customer\branch\brand-dark-8.jpg" />
+    <Content Include="Images\Customer\branch\brand-dark-9.jpg" />
+    <Content Include="Images\Customer\branch\capsule.svg" />
+    <Content Include="Images\Customer\branch\dental.svg" />
+    <Content Include="Images\Customer\branch\heart-healt.svg" />
+    <Content Include="Images\Customer\branch\microscope.svg" />
+    <Content Include="Images\Customer\branch\plastercross.svg" />
+    <Content Include="Images\Customer\branch\thermometer.svg" />
+    <Content Include="Images\Customer\branch\tube.svg" />
+    <Content Include="Images\Customer\cartoon-doctor.jpg" />
+    <Content Include="Images\Customer\christmas-banner-mobile-txt.png" />
+    <Content Include="Images\Customer\christmas-banner-txt.png" />
+    <Content Include="Images\Customer\delivery-medicine-home.jpg" />
+    <Content Include="Images\Customer\favicon.png" />
+    <Content Include="Images\Customer\girl-face-mask.png" />
+    <Content Include="Images\Customer\goby-unsplash.jpg" />
+    <Content Include="Images\Customer\heart-white.png" />
+    <Content Include="Images\Customer\icon\anti-virus.png" />
+    <Content Include="Images\Customer\icon\bacteria-1.png" />
+    <Content Include="Images\Customer\icon\bacteria-navy.png" />
+    <Content Include="Images\Customer\icon\bacterial.svg" />
+    <Content Include="Images\Customer\icon\bars-dark.svg" />
+    <Content Include="Images\Customer\icon\bars.svg" />
+    <Content Include="Images\Customer\icon\certificate-1.png" />
+    <Content Include="Images\Customer\icon\certificate-dark.png" />
+    <Content Include="Images\Customer\icon\certificate-info.png" />
+    <Content Include="Images\Customer\icon\certificate-navy.png" />
+    <Content Include="Images\Customer\icon\certificate-ribbon.png" />
+    <Content Include="Images\Customer\icon\dashboard-icon.png" />
+    <Content Include="Images\Customer\icon\dentistry-dark.png" />
+    <Content Include="Images\Customer\icon\dentistry-info.png" />
+    <Content Include="Images\Customer\icon\gird2-dark.svg" />
+    <Content Include="Images\Customer\icon\gird2.svg" />
+    <Content Include="Images\Customer\icon\gird3-dark.svg" />
+    <Content Include="Images\Customer\icon\gird3.svg" />
+    <Content Include="Images\Customer\icon\gird4-dark.svg" />
+    <Content Include="Images\Customer\icon\gird4.svg" />
+    <Content Include="Images\Customer\icon\heart-healthcare.png" />
+    <Content Include="Images\Customer\icon\icon10.png" />
+    <Content Include="Images\Customer\icon\icon11.png" />
+    <Content Include="Images\Customer\icon\icon12.png" />
+    <Content Include="Images\Customer\icon\icon13.png" />
+    <Content Include="Images\Customer\icon\icon14.png" />
+    <Content Include="Images\Customer\icon\icon15.png" />
+    <Content Include="Images\Customer\icon\icon16.png" />
+    <Content Include="Images\Customer\icon\icon17.png" />
+    <Content Include="Images\Customer\icon\icon18.png" />
+    <Content Include="Images\Customer\icon\icon19.png" />
+    <Content Include="Images\Customer\icon\icon9.png" />
+    <Content Include="Images\Customer\icon\paramedic-sign.png" />
+    <Content Include="Images\Customer\icon\paramedic-white.png" />
+    <Content Include="Images\Customer\icon\ribbon.svg" />
+    <Content Include="Images\Customer\icon\virus-navy.png" />
+    <Content Include="Images\Customer\icon\virus.svg" />
+    <Content Include="Images\Customer\instagram\instagram1.jpg" />
+    <Content Include="Images\Customer\instagram\instagram2.jpg" />
+    <Content Include="Images\Customer\instagram\instagram3.png" />
+    <Content Include="Images\Customer\instagram\instagram4.png" />
+    <Content Include="Images\Customer\instagram\instagram5.png" />
+    <Content Include="Images\Customer\instagram\instagram6.png" />
+    <Content Include="Images\Customer\instagram\instagram7.png" />
+    <Content Include="Images\Customer\instagram\instagram8.png" />
+    <Content Include="Images\Customer\instagram\instagram9.png" />
+    <Content Include="Images\Customer\interface-grid.png" />
+    <Content Include="Images\Customer\Logo-black.png" />
+    <Content Include="Images\Customer\logo-coming-soon.png" />
+    <Content Include="Images\Customer\logo-dark.png" />
+    <Content Include="Images\Customer\logo-green.png" />
+    <Content Include="Images\Customer\logo-white.png" />
+    <Content Include="Images\Customer\logo-white1.png" />
+    <Content Include="Images\Customer\logo.png" />
+    <Content Include="Images\Customer\Mask-Group.jpg" />
+    <Content Include="Images\Customer\medicine-handover.png" />
+    <Content Include="Images\Customer\mobile-logo.png" />
+    <Content Include="Images\Customer\newsletter-bg.jpg" />
+    <Content Include="Images\Customer\payment-light.png" />
+    <Content Include="Images\Customer\payment-product.png" />
+    <Content Include="Images\Customer\payment.png" />
+    <Content Include="Images\Customer\Pharmacy\image01.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image02.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image03.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image04.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image05.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image06.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image07.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image08.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image09.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image10.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image11.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image12.jpg" />
+    <Content Include="Images\Customer\Pharmacy\image13.jpg" />
+    <Content Include="Images\Customer\Pharmacy_boy.png" />
+    <Content Include="Images\Customer\prescription\PaymentMethods.png" />
+    <Content Include="Images\Customer\prescription\PaymentMethods1.png" />
+    <Content Include="Images\Customer\prescription\UploadPrescription.png" />
+    <Content Include="Images\Customer\products\001.jpg" />
+    <Content Include="Images\Customer\products\002.jpg" />
+    <Content Include="Images\Customer\products\003.jpg" />
+    <Content Include="Images\Customer\products\004.jpg" />
+    <Content Include="Images\Customer\products\005.jpg" />
+    <Content Include="Images\Customer\products\006.jpg" />
+    <Content Include="Images\Customer\products\007.jpg" />
+    <Content Include="Images\Customer\products\008.jpg" />
+    <Content Include="Images\Customer\products\009.jpg" />
+    <Content Include="Images\Customer\products\010.jpg" />
+    <Content Include="Images\Customer\products\011.jpg" />
+    <Content Include="Images\Customer\products\012.jpg" />
+    <Content Include="Images\Customer\products\013.jpg" />
+    <Content Include="Images\Customer\products\015.jpg" />
+    <Content Include="Images\Customer\products\016.jpg" />
+    <Content Include="Images\Customer\products\017.jpg" />
+    <Content Include="Images\Customer\products\018.jpg" />
+    <Content Include="Images\Customer\products\019.jpg" />
+    <Content Include="Images\Customer\products\020.jpg" />
+    <Content Include="Images\Customer\products\020.png" />
+    <Content Include="Images\Customer\products\021.jpg" />
+    <Content Include="Images\Customer\products\026.jpg" />
+    <Content Include="Images\Customer\products\027.jpg" />
+    <Content Include="Images\Customer\products\028.jpg" />
+    <Content Include="Images\Customer\products\030.jpg" />
+    <Content Include="Images\Customer\products\032.jpg" />
+    <Content Include="Images\Customer\products\033.jpg" />
+    <Content Include="Images\Customer\products\034.jpg" />
+    <Content Include="Images\Customer\products\037.jpg" />
+    <Content Include="Images\Customer\products\038.jpg" />
+    <Content Include="Images\Customer\products\039.jpg" />
+    <Content Include="Images\Customer\products\039.png" />
+    <Content Include="Images\Customer\products\040.jpg" />
+    <Content Include="Images\Customer\products\042.jpg" />
+    <Content Include="Images\Customer\products\043.jpg" />
+    <Content Include="Images\Customer\products\045.jpg" />
+    <Content Include="Images\Customer\products\045.png" />
+    <Content Include="Images\Customer\products\046.jpg" />
+    <Content Include="Images\Customer\products\047.jpg" />
+    <Content Include="Images\Customer\products\048.jpg" />
+    <Content Include="Images\Customer\products\048.png" />
+    <Content Include="Images\Customer\products\049.jpg" />
+    <Content Include="Images\Customer\products\050.jpg" />
+    <Content Include="Images\Customer\products\051.jpg" />
+    <Content Include="Images\Customer\products\052.jpg" />
+    <Content Include="Images\Customer\products\053.jpg" />
+    <Content Include="Images\Customer\products\054.jpg" />
+    <Content Include="Images\Customer\products\055.jpg" />
+    <Content Include="Images\Customer\products\056.jpg" />
+    <Content Include="Images\Customer\products\057.jpg" />
+    <Content Include="Images\Customer\products\059-350x350.jpg" />
+    <Content Include="Images\Customer\products\060-350x350.jpg" />
+    <Content Include="Images\Customer\products\061-350x350.jpg" />
+    <Content Include="Images\Customer\products\062-350x350.jpg" />
+    <Content Include="Images\Customer\products\063-350x350.jpg" />
+    <Content Include="Images\Customer\products\064-350x350.jpg" />
+    <Content Include="Images\Customer\products\mask1.png" />
+    <Content Include="Images\Customer\products\mask2.png" />
+    <Content Include="Images\Customer\products\mask3.png" />
+    <Content Include="Images\Customer\products\medicine1.jpg" />
+    <Content Include="Images\Customer\products\medicine10.jpg" />
+    <Content Include="Images\Customer\products\medicine11.jpg" />
+    <Content Include="Images\Customer\products\medicine12.jpg" />
+    <Content Include="Images\Customer\products\medicine13.jpg" />
+    <Content Include="Images\Customer\products\medicine14.jpg" />
+    <Content Include="Images\Customer\products\medicine15.jpg" />
+    <Content Include="Images\Customer\products\medicine16.jpg" />
+    <Content Include="Images\Customer\products\medicine17.jpg" />
+    <Content Include="Images\Customer\products\medicine18.jpg" />
+    <Content Include="Images\Customer\products\medicine19.jpg" />
+    <Content Include="Images\Customer\products\medicine2.jpg" />
+    <Content Include="Images\Customer\products\medicine20.jpg" />
+    <Content Include="Images\Customer\products\medicine21.jpg" />
+    <Content Include="Images\Customer\products\medicine22.jpg" />
+    <Content Include="Images\Customer\products\medicine23.jpg" />
+    <Content Include="Images\Customer\products\medicine24.jpg" />
+    <Content Include="Images\Customer\products\medicine25.jpg" />
+    <Content Include="Images\Customer\products\medicine26.jpg" />
+    <Content Include="Images\Customer\products\medicine27.jpg" />
+    <Content Include="Images\Customer\products\medicine28.jpg" />
+    <Content Include="Images\Customer\products\medicine29.jpg" />
+    <Content Include="Images\Customer\products\medicine3.jpg" />
+    <Content Include="Images\Customer\products\medicine30.jpg" />
+    <Content Include="Images\Customer\products\medicine31.jpg" />
+    <Content Include="Images\Customer\products\medicine32.jpg" />
+    <Content Include="Images\Customer\products\medicine33.jpg" />
+    <Content Include="Images\Customer\products\medicine4.jpg" />
+    <Content Include="Images\Customer\products\medicine5.jpg" />
+    <Content Include="Images\Customer\products\medicine6.jpg" />
+    <Content Include="Images\Customer\products\medicine7.jpg" />
+    <Content Include="Images\Customer\products\medicine8.jpg" />
+    <Content Include="Images\Customer\products\medicine9.jpg" />
+    <Content Include="Images\Customer\products\New Product\1.1.jpg" />
+    <Content Include="Images\Customer\products\New Product\1.jpg" />
+    <Content Include="Images\Customer\products\New Product\10.10.jpg" />
+    <Content Include="Images\Customer\products\New Product\10.jpg" />
+    <Content Include="Images\Customer\products\New Product\11.11.jpg" />
+    <Content Include="Images\Customer\products\New Product\11.jpg" />
+    <Content Include="Images\Customer\products\New Product\12.12.jpg" />
+    <Content Include="Images\Customer\products\New Product\12.jpg" />
+    <Content Include="Images\Customer\products\New Product\13.13.jpg" />
+    <Content Include="Images\Customer\products\New Product\13.jpg" />
+    <Content Include="Images\Customer\products\New Product\14.14.jpg" />
+    <Content Include="Images\Customer\products\New Product\14.jpg" />
+    <Content Include="Images\Customer\products\New Product\15.15.jpg" />
+    <Content Include="Images\Customer\products\New Product\15.jpg" />
+    <Content Include="Images\Customer\products\New Product\16.16.jpg" />
+    <Content Include="Images\Customer\products\New Product\16.jpg" />
+    <Content Include="Images\Customer\products\New Product\17.17.jpg" />
+    <Content Include="Images\Customer\products\New Product\17.jpg" />
+    <Content Include="Images\Customer\products\New Product\18.18.jpg" />
+    <Content Include="Images\Customer\products\New Product\18.jpg" />
+    <Content Include="Images\Customer\products\New Product\19.19.jpg" />
+    <Content Include="Images\Customer\products\New Product\19.jpg" />
+    <Content Include="Images\Customer\products\New Product\2.2.jpg" />
+    <Content Include="Images\Customer\products\New Product\2.jpg" />
+    <Content Include="Images\Customer\products\New Product\20.20.jpg" />
+    <Content Include="Images\Customer\products\New Product\20.jpg" />
+    <Content Include="Images\Customer\products\New Product\21.21.jpg" />
+    <Content Include="Images\Customer\products\New Product\21.jpg" />
+    <Content Include="Images\Customer\products\New Product\22.22.jpg" />
+    <Content Include="Images\Customer\products\New Product\22.jpg" />
+    <Content Include="Images\Customer\products\New Product\23.23.jpg" />
+    <Content Include="Images\Customer\products\New Product\23.jpg" />
+    <Content Include="Images\Customer\products\New Product\24.24.jpg" />
+    <Content Include="Images\Customer\products\New Product\24.jpg" />
+    <Content Include="Images\Customer\products\New Product\25.25.jpg" />
+    <Content Include="Images\Customer\products\New Product\25.jpg" />
+    <Content Include="Images\Customer\products\New Product\26.26.jpg" />
+    <Content Include="Images\Customer\products\New Product\26.jpg" />
+    <Content Include="Images\Customer\products\New Product\27.27.jpg" />
+    <Content Include="Images\Customer\products\New Product\27.jpg" />
+    <Content Include="Images\Customer\products\New Product\3.3.jpg" />
+    <Content Include="Images\Customer\products\New Product\3.jpg" />
+    <Content Include="Images\Customer\products\New Product\4.4.jpg" />
+    <Content Include="Images\Customer\products\New Product\4.jpg" />
+    <Content Include="Images\Customer\products\New Product\5.5.jpg" />
+    <Content Include="Images\Customer\products\New Product\5.jpg" />
+    <Content Include="Images\Customer\products\New Product\6.6.jpg" />
+    <Content Include="Images\Customer\products\New Product\6.jpg" />
+    <Content Include="Images\Customer\products\New Product\7.7.jpg" />
+    <Content Include="Images\Customer\products\New Product\7.jpg" />
+    <Content Include="Images\Customer\products\New Product\8.8.jpg" />
+    <Content Include="Images\Customer\products\New Product\8.jpg" />
+    <Content Include="Images\Customer\products\New Product\9.9.jpg" />
+    <Content Include="Images\Customer\products\New Product\9.jpg" />
+    <Content Include="Images\Customer\products\New Product\bg-bannerNew1.jpg" />
+    <Content Include="Images\Customer\products\New Product\bg-bannerNew2.jpg" />
+    <Content Include="Images\Customer\products\New Product\bg-bannerNew3.jpg" />
+    <Content Include="Images\Customer\products\New Product\bg-bannerNew5.jpg" />
+    <Content Include="Images\Customer\products\pressure-tab-content.jpg" />
+    <Content Include="Images\Customer\promotion\anti-virus-bg.jpg" />
+    <Content Include="Images\Customer\promotion\banner-bg-12.jpg" />
+    <Content Include="Images\Customer\promotion\banner-delivery-2.jpg" />
+    <Content Include="Images\Customer\promotion\banner-delivery-3.jpg" />
+    <Content Include="Images\Customer\promotion\banner-home13-1.jpg" />
+    <Content Include="Images\Customer\promotion\banner-home13-2.jpg" />
+    <Content Include="Images\Customer\promotion\banner-home13-3.jpg" />
+    <Content Include="Images\Customer\promotion\banner-home13-4.jpg" />
+    <Content Include="Images\Customer\promotion\banner-home13-5.jpg" />
+    <Content Include="Images\Customer\promotion\banner-home13-6.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner-dental.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner-detal.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner1.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner10.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner11.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner13.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner14.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner15.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner16.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner17.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner18.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner19.png" />
+    <Content Include="Images\Customer\promotion\bg-banner2.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner20.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner21.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner22.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner23.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner24.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner25.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner26.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner27.png" />
+    <Content Include="Images\Customer\promotion\bg-banner28.png" />
+    <Content Include="Images\Customer\promotion\bg-banner29.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner3.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner30.png" />
+    <Content Include="Images\Customer\promotion\bg-banner31.png" />
+    <Content Include="Images\Customer\promotion\bg-banner4.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner5.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner6.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner7.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner8.jpg" />
+    <Content Include="Images\Customer\promotion\bg-banner9.jpg" />
+    <Content Include="Images\Customer\promotion\bg-promo1.jpg" />
+    <Content Include="Images\Customer\promotion\bg-promo2.jpg" />
+    <Content Include="Images\Customer\promotion\bg-promo3.jpg" />
+    <Content Include="Images\Customer\promotion\bg-slide3-home3.jpg" />
+    <Content Include="Images\Customer\promotion\bg.jpg" />
+    <Content Include="Images\Customer\promotion\blood-pressure.jpg" />
+    <Content Include="Images\Customer\promotion\dental-cat.png" />
+    <Content Include="Images\Customer\promotion\face-masks.jpg" />
+    <Content Include="Images\Customer\promotion\facemask-cat.png" />
+    <Content Include="Images\Customer\promotion\footer-banner.jpg" />
+    <Content Include="Images\Customer\promotion\goby-tD3GaS9ysF4-unsplash.jpg" />
+    <Content Include="Images\Customer\promotion\goby-tD3GaS9ysF4-unsplash2.jpg" />
+    <Content Include="Images\Customer\promotion\goby-tD3GaS9ysF4-unsplash3.jpg" />
+    <Content Include="Images\Customer\promotion\goby-unsplash-1.jpg" />
+    <Content Include="Images\Customer\promotion\goby-unsplash.jpg" />
+    <Content Include="Images\Customer\promotion\home4-banner-4.jpg" />
+    <Content Include="Images\Customer\promotion\home6-bg.jpg" />
+    <Content Include="Images\Customer\promotion\home6-bg2.jpg" />
+    <Content Include="Images\Customer\promotion\home6-bg3.jpg" />
+    <Content Include="Images\Customer\promotion\home6-latest-review_280x.png" />
+    <Content Include="Images\Customer\promotion\home9-mask.png" />
+    <Content Include="Images\Customer\promotion\img-mask.png" />
+    <Content Include="Images\Customer\promotion\pressure-cat.png" />
+    <Content Include="Images\Customer\promotion\promo11.png" />
+    <Content Include="Images\Customer\promotion\promo12.jpg" />
+    <Content Include="Images\Customer\promotion\promo13.jpg" />
+    <Content Include="Images\Customer\promotion\promo14.jpg" />
+    <Content Include="Images\Customer\promotion\promo15.jpg" />
+    <Content Include="Images\Customer\promotion\promo16.jpg" />
+    <Content Include="Images\Customer\promotion\protectcover-cat.png" />
+    <Content Include="Images\Customer\promotion\slide1.png" />
+    <Content Include="Images\Customer\promotion\slide10.jpg" />
+    <Content Include="Images\Customer\promotion\slide11.png" />
+    <Content Include="Images\Customer\promotion\slide13.jpg" />
+    <Content Include="Images\Customer\promotion\slide14.jpg" />
+    <Content Include="Images\Customer\promotion\slide15.jpg" />
+    <Content Include="Images\Customer\promotion\slide16.jpg" />
+    <Content Include="Images\Customer\promotion\slide17.jpg" />
+    <Content Include="Images\Customer\promotion\slide18.png" />
+    <Content Include="Images\Customer\promotion\slide19.png" />
+    <Content Include="Images\Customer\promotion\slide2.jpg" />
+    <Content Include="Images\Customer\promotion\slide3.png" />
+    <Content Include="Images\Customer\promotion\slide4.png" />
+    <Content Include="Images\Customer\promotion\slide5.jpg" />
+    <Content Include="Images\Customer\promotion\slide7.jpg" />
+    <Content Include="Images\Customer\promotion\slide8.jpg" />
+    <Content Include="Images\Customer\promotion\slide9.jpg" />
+    <Content Include="Images\Customer\promotion\sugarlevel-cat.png" />
+    <Content Include="Images\Customer\promotion\uniforms-cat.png" />
+    <Content Include="Images\Customer\quote-icon.png" />
+    <Content Include="Images\Customer\related-bg.jpg" />
+    <Content Include="Images\Customer\round2.png" />
+    <Content Include="Images\Customer\round5.png" />
+    <Content Include="Images\Customer\roundbg.png" />
+    <Content Include="Images\Customer\rounds.png" />
+    <Content Include="Images\Customer\sticky-logo.png" />
+    <Content Include="Images\Customer\tool.png" />
+    <Content Include="Images\Customer\white-gradient.png" />
+    <Content Include="Images\Delivery\grid\truck.png" />
+    <Content Include="Images\Login\login.jpg" />
+    <Content Include="Images\Logo\circle-logo.png" />
+    <Content Include="Images\Logo\compress-logo.png" />
+    <Content Include="Images\Logo\standard-logo.jpg" />
+    <Content Include="Images\Null\avatar.png" />
+    <Content Include="Images\Null\blank.png" />
+    <Content Include="Images\Null\item1.png" />
+    <Content Include="Images\Null\item2.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\Temp\1.jpg" />
+    <Content Include="Pages\Client\Home.aspx" />
+    <Content Include="Pages\Customer\Home.aspx" />
+    <Content Include="Pages\Login.aspx" />
+    <Content Include="Plugins\Client\chart.js\Chart.bundle.js" />
+    <Content Include="Plugins\Client\chart.js\Chart.bundle.min.js" />
+    <Content Include="Plugins\Client\chart.js\Chart.css" />
+    <Content Include="Plugins\Client\chart.js\Chart.js" />
+    <Content Include="Plugins\Client\chart.js\Chart.min.css" />
+    <Content Include="Plugins\Client\chart.js\Chart.min.js" />
+    <Content Include="Plugins\Client\datatables\bootstrap4.dataTables.min.css" />
+    <Content Include="Plugins\Client\datatables\bootstrap4.dataTables.min.js" />
+    <Content Include="Plugins\Client\datatables\jquery.dataTables.min.css" />
+    <Content Include="Plugins\Client\datatables\jquery.dataTables.min.js" />
+    <Content Include="Plugins\Client\fontawesome\css\all.css" />
+    <Content Include="Plugins\Client\fontawesome\css\all.min.css" />
+    <Content Include="Plugins\Client\fontawesome\css\brands.css" />
+    <Content Include="Plugins\Client\fontawesome\css\brands.min.css" />
+    <Content Include="Plugins\Client\fontawesome\css\fontawesome.css" />
+    <Content Include="Plugins\Client\fontawesome\css\fontawesome.min.css" />
+    <Content Include="Plugins\Client\fontawesome\css\regular.css" />
+    <Content Include="Plugins\Client\fontawesome\css\regular.min.css" />
+    <Content Include="Plugins\Client\fontawesome\css\solid.css" />
+    <Content Include="Plugins\Client\fontawesome\css\solid.min.css" />
+    <Content Include="Plugins\Client\fontawesome\css\svg-with-js.css" />
+    <Content Include="Plugins\Client\fontawesome\css\svg-with-js.min.css" />
+    <Content Include="Plugins\Client\fontawesome\css\v4-shims.css" />
+    <Content Include="Plugins\Client\fontawesome\css\v4-shims.min.css" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-brands-400.svg" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-regular-400.svg" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Plugins\Client\imagezoom\js-image-zoom.js" />
+    <Content Include="Plugins\Client\toastr\toastr.css" />
+    <Content Include="Plugins\Client\toastr\toastr.min.css" />
+    <Content Include="Plugins\Client\toastr\toastr.min.js" />
+    <Content Include="Plugins\Customer\jquery-bar-rating\dist\jquery.barrating.min.js" />
+    <Content Include="Plugins\Customer\jquery-bar-rating\dist\themes\fontawesome-stars.css" />
+    <Content Include="Plugins\Customer\jquery.min.js" />
+    <Content Include="Plugins\Customer\lightGallery\dist\css\lightgallery.min.css" />
+    <Content Include="Plugins\Customer\lightGallery\dist\fonts\lg8306.svg" />
+    <Content Include="Plugins\Customer\lightGallery\dist\img\loading.gif" />
+    <Content Include="Plugins\Customer\lightGallery\dist\img\video-play.png" />
+    <Content Include="Plugins\Customer\lightGallery\dist\img\vimeo-play.png" />
+    <Content Include="Plugins\Customer\lightGallery\dist\img\youtube-play.png" />
+    <Content Include="Plugins\Customer\lightGallery\dist\js\lightgallery-all.min.js" />
+    <Content Include="Plugins\Customer\noUiSlider\nouislider.css" />
+    <Content Include="Plugins\Customer\noUiSlider\nouislider.min.js" />
+    <Content Include="Plugins\Customer\owl-carousel\assets\owl.carousel.css" />
+    <Content Include="Plugins\Customer\owl-carousel\assets\owl.video.play.html" />
+    <Content Include="Plugins\Customer\owl-carousel\owl.carousel.min.js" />
+    <Content Include="Plugins\Customer\popper.min.js" />
+    <Content Include="Plugins\Customer\select2\dist\css\select2.min.css" />
+    <Content Include="Plugins\Customer\select2\dist\js\select2.full.min.js" />
+    <Content Include="Plugins\Customer\slick\slick\slick.css" />
+    <Content Include="Plugins\Customer\slick\slick\slick.min.js" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Fonts\Linearicons.ttf" />
+    <Content Include="Pages\Shared\AdminMaster.Master" />
+    <Content Include="Pages\Shared\CustomerMaster.Master" />
+    <Content Include="Pages\Shared\DeliveryMaster.Master" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-brands-400.eot" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-brands-400.woff" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-regular-400.eot" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-regular-400.woff" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-solid-900.eot" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Plugins\Client\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Plugins\Client\toastr\toastr.js.map" />
+    <Content Include="Plugins\Customer\lightGallery\dist\fonts\lg8306.ttf" />
+    <Content Include="Plugins\Customer\lightGallery\dist\fonts\lg8306.woff" />
+    <Content Include="Scripts\adminlte-function.js" />
+    <Content Include="Scripts\adminlte.js" />
+    <Content Include="Scripts\adminlte.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\customer-main.js" />
+    <Content Include="Scripts\dashboard.js" />
+    <Content Include="Scripts\dashboard2.js" />
+    <Content Include="Scripts\dashboard3.js" />
+    <Content Include="Scripts\email-decode.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Plugins\Client\imagezoom\package.json" />
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\sweetalert2.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Client\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Client\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Customer\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Customer\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Shared\AdminMaster.Master.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Shared\AdminMaster.Master.designer.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Shared\CustomerMaster.Master.cs">
+      <DependentUpon>CustomerMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Shared\CustomerMaster.Master.designer.cs">
+      <DependentUpon>CustomerMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Shared\DeliveryMaster.Master.cs">
+      <DependentUpon>DeliveryMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Shared\DeliveryMaster.Master.designer.cs">
+      <DependentUpon>DeliveryMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Pages\Delivery\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ECOMBLL\ECOMBLL.csproj">
+      <Project>{92f5dc41-74ad-4c51-969c-08e62d062bc3}</Project>
+      <Name>ECOMBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65095</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44365/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.13\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.13\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.13\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.13\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.13\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.13\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
