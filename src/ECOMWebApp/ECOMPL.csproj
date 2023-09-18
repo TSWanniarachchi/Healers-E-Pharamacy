@@ -553,6 +553,7 @@
     <Content Include="Images\Temp\1.jpg" />
     <Content Include="Pages\Client\Home.aspx" />
     <Content Include="Pages\Customer\Home.aspx" />
+    <Content Include="Pages\Customer\SignUp.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Plugins\Client\chart.js\Chart.bundle.js" />
     <Content Include="Plugins\Client\chart.js\Chart.bundle.min.js" />
@@ -769,6 +770,13 @@
     </Compile>
     <Compile Include="Pages\Customer\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Customer\SignUp.aspx.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Customer\SignUp.aspx.designer.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
