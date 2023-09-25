@@ -45,6 +45,7 @@
     <Compile Include="BALAdminMaster.cs" />
     <Compile Include="BLLCommonEnum.cs" />
     <Compile Include="BLLCommonFunction.cs" />
+    <Compile Include="BLLCompany.cs" />
     <Compile Include="BLLCustomer.cs" />
     <Compile Include="BLLPageLevelSecurity.cs" />
     <Compile Include="BLLPharmacyDashboard.cs" />
