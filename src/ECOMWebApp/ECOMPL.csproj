@@ -551,6 +551,7 @@
     <Content Include="Images\Null\item2.png" />
     <Content Include="Global.asax" />
     <Content Include="Images\Temp\1.jpg" />
+    <Content Include="Pages\Client\Company.aspx" />
     <Content Include="Pages\Client\Customer.aspx" />
     <Content Include="Pages\Client\Home.aspx" />
     <Content Include="Pages\Customer\Home.aspx" />
@@ -757,6 +758,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Client\Company.aspx.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Client\Company.aspx.designer.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Client\Customer.aspx.cs">
       <DependentUpon>Customer.aspx</DependentUpon>
