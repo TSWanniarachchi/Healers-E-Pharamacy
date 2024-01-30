@@ -47,6 +47,7 @@
     <Compile Include="DALCommonFunction.cs" />
     <Compile Include="DALCompany.cs" />
     <Compile Include="DALCustomer.cs" />
+    <Compile Include="DALItem.cs" />
     <Compile Include="DALPharmacyDashboard.cs" />
     <Compile Include="DALSystemUserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
