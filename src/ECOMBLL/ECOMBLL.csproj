@@ -47,6 +47,7 @@
     <Compile Include="BLLCommonFunction.cs" />
     <Compile Include="BLLCompany.cs" />
     <Compile Include="BLLCustomer.cs" />
+    <Compile Include="BLLItem.cs" />
     <Compile Include="BLLPageLevelSecurity.cs" />
     <Compile Include="BLLPharmacyDashboard.cs" />
     <Compile Include="BLLSystemUserLogin.cs" />
