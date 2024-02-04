@@ -555,6 +555,7 @@
     <Content Include="Pages\Client\Customer.aspx" />
     <Content Include="Pages\Client\Home.aspx" />
     <Content Include="Pages\Client\ItemMaster.aspx" />
+    <Content Include="Pages\Client\ItemStock.aspx" />
     <Content Include="Pages\Customer\Home.aspx" />
     <Content Include="Pages\Customer\SignUp.aspx" />
     <Content Include="Pages\Login.aspx" />
@@ -787,6 +788,13 @@
     </Compile>
     <Compile Include="Pages\Client\ItemMaster.aspx.designer.cs">
       <DependentUpon>ItemMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Client\ItemStock.aspx.cs">
+      <DependentUpon>ItemStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Client\ItemStock.aspx.designer.cs">
+      <DependentUpon>ItemStock.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Customer\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

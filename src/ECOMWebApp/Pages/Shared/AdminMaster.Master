@@ -276,7 +276,7 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="../Client/StockPage.aspx" class="nav-link">
+                                        <a href="../Client/ItemStock.aspx" class="nav-link">
                                             <i class="fas fa-warehouse nav-icon ml-2" aria-hidden="true"></i>
                                             <p>Stock</p>
                                         </a>
