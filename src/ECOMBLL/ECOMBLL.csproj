@@ -50,6 +50,7 @@
     <Compile Include="BLLItem.cs" />
     <Compile Include="BLLPageLevelSecurity.cs" />
     <Compile Include="BLLPharmacyDashboard.cs" />
+    <Compile Include="BLLStock.cs" />
     <Compile Include="BLLSystemUserLogin.cs" />
     <Compile Include="Cryptography.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
